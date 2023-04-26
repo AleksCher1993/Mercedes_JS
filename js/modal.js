@@ -1,9 +1,11 @@
-const moreBtn=document.querySelector('.more')
+const moreBtn=document.querySelectorAll('.more')
 const modal=document.querySelector('.modal')
+moreBtn.forEach((btn)=>{
 
-moreBtn.addEventListener('click',()=>{
-    modal.classList.remove('hidden')
-    document.body.classList.add('body__locked')
+    btn.addEventListener('click',()=>{
+        modal.classList.remove('hidden')
+        document.body.classList.add('body__locked')
+    })
 })
 modal.addEventListener('click',(event)=>{
     const target=event.target
