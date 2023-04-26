@@ -20,7 +20,9 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
-
+.body__locked{
+  overflow: hidden;
+}
 /* Sections
  @mixin ========================================================================= */
 /**
@@ -841,6 +843,7 @@ transition: all .3s ease 0s;
   .contacts-wrapper {
     background-size: 67%;
   }
+  
 }
 
 @media (max-width: 1470px) {
