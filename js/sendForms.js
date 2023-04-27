@@ -1,11 +1,16 @@
-const formTestDrive=document.querySelector('.form-test-drive')
-formTestDrive.addEventListener('submit',(event)=>{
-    event.preventDefault()
+const formTestDrive=document.querySelectorAll('.form')
+const modall=document.querySelector('.modal')
+
+formTestDrive.forEach(form=>{
+
+    
+    form.addEventListener('submit',(event)=>{
+        event.preventDefault()
     const formObj={}
-    for (const {name,value} of formTestDrive.elements) {
+    for (const {name,value} of form.elements) {
         if (name) {
             formObj[name]=value
-
+            
         }
     }
     
@@ -14,10 +19,9 @@ formTestDrive.addEventListener('submit',(event)=>{
         body:JSON.stringify(formObj),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
-          },
-
+        },
     })
-      .then(response => {
+    .then(response => {
         if (response.status===200||response.status===201) {
             
             return response.json()
@@ -25,10 +29,13 @@ formTestDrive.addEventListener('submit',(event)=>{
     })
       .then(() => {
         alert('Вы успешно отправили')
-        formTestDrive.reset()
+        modall.classList.add('hidden')
+        document.body.classList.remove('body__locked')
+        form.reset()
     })
     .catch(error=>{
         alert('Gроизошла ошибка, статус ' + error.message)
     })
     
+})
 })
